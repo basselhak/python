@@ -1,0 +1,5 @@
+#load and read text
+print ("load and read text ...")
+OpenFile ("constitution_of_usa.txt")
+ReadText = OpenFile.read()
+print (ReadText)
