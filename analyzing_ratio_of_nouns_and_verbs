@@ -1,0 +1,57 @@
+#import modules 
+import nltk
+
+# load and read text
+print ("Load and read text...")
+OpenFile = open("constitution_of_usa.txt")
+ReadText = OpenFile.read()
+
+# remove new lines and tabs
+print ("Remove new lines and tabs ...")
+RawText = ReadText.replace("\n", " ").replace("\t", " ")
+
+# Tokenization
+print ("Tokenize text ...")
+TokenizeText = nltk.word_tokenize(RawText)
+
+# PoS tagging:
+print ("Part of Speech tagging ...")
+PosText = nltk.pos_tag(TokenizeText)
+
+# find nouns
+# Output to file
+
+print ("Find nouns ...")
+NounList = list()
+for noun in range(0,len(PosText)):
+	if PosText[noun][1].startswith("N"):
+		NounList.append(PosText[noun][0])
+
+with open('nouns.txt', "w") as f:
+    for item in [NounList]:
+        f.write(str(item) + "/n")
+
+# find verbs
+# Output to file
+		
+print ("Find verbs ...")
+VerbList = list()
+for verb in range(0, len(PosText)):
+	if PosText[verb][1].startswith("V"):
+		VerbList.append(PosText[verb][0])
+
+with open('verbs.txt', "w") as f:
+    for item in [VerbList]:
+        f.write(str(item) + "/n")
+
+# counting nouns and verbs
+print ("Counting nouns and verbs ...")
+print ("The number of nouns in the text =")
+print(len(NounList), "nouns.")
+print ("The number of verbs in the text =")
+print(len(VerbList), "verbs.")
+
+# Ratio of nouns to verbs:
+print ("Analyzing the ratio of nouns and verbs ...")
+print ("The ratio of nouns and verbs in the text =")
+print((str(len(NounList)/float(len(VerbList)))))
