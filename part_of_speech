@@ -1,0 +1,21 @@
+#import modules 
+import nltk
+
+# load and read text
+print ("Load and read text...")
+OpenFile = open("constitution_of_usa.txt")
+ReadText = OpenFile.read()
+
+# remove new lines and tabs
+print ("Remove new lines and tabs ...")
+RawText = ReadText.replace('\n', '').replace('\t', '')
+
+# Tokenization
+print ("Tokenize text ...")
+TokenizeText = nltk.word_tokenize(RawText)
+
+# PoS tagging:
+print ("Part of Speech tagging ...")
+PosText = nltk.pos_tag(TokenizeText)
+
+print (PosText)
