@@ -1,0 +1,37 @@
+#import modules 
+import nltk
+import csv
+
+# load and read text
+print ("Load and read text...")
+OpenFile = open("constitution_of_usa.txt")
+ReadText = OpenFile.read()
+
+# remove new lines and tabs
+print ("Remove new lines and tabs ...")
+RawText = ReadText.replace("\n", " ").replace("\t", " ").replace(".", " ").replace(",", " ")
+
+# Tokenization
+print ("Tokenize text ...")
+TokenizeText = nltk.word_tokenize(RawText)
+
+# Work out frequency distribution for each word in the text
+print ("Analyzing word frequency ...")
+WordFreq = nltk.FreqDist(TokenizeText)
+
+# sort by size (so that we see the most commonly occurring words first)
+print ("Sorting word frequency by size ...")
+WordFreqSorted = WordFreq.most_common()
+
+# Output to csv file
+with open("WordFreqSorted.csv","w") as output:
+    csv_output=csv.writer(output)
+    csv_output.writerow(["word","freq"])
+    for row in WordFreqSorted:
+        try:
+            csv_output.writerow(row)
+        except:
+            print("cannot save "+str(row)+" to file")
+
+# Tell people to open the csv-fil and look for the word frequency
+print("Look for WordFreqSorted.csv in the folder")
