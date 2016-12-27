@@ -1,0 +1,15 @@
+# load and read text
+print ("Load and read text...")
+OpenFile = open("constitution_of_usa.txt")
+ReadText = OpenFile.read()
+
+# remove new lines and tabs
+print ("Remove new lines and tabs ...")
+RawText = ReadText.replace('\n', '').replace('\t', '')
+
+# counting length
+print ("counting length ...")
+TextLen = len(RawText)
+
+print ("The length of the text =")
+print (TextLen, "signs.")
