@@ -1,0 +1,31 @@
+#import modules
+import nltk
+
+# load and read text
+print ("Load and read text...")
+OpenFile = open("constitution_of_usa.txt")
+ReadText = OpenFile.read()
+
+# remove new lines and tabs
+print ("Remove new lines and tabs ...")
+RawText = ReadText.replace("\n", "").replace("\t", "").replace(",", "").replace("1", "")
+
+# counting text length
+print ("Counting length of text ...")
+TextLength = len(RawText)
+print ("Text Length =", TextLength)
+
+# tokenize text
+print ("tokenize text ...")
+TokenizeText = nltk.word_tokenize(ReadText)
+
+# LongWords = word in Vocabulary if length of word > 10
+print ("searching for words with a length greater than ten")
+Vocabulary = set(TokenizeText)
+LongWords = [w for w in Vocabulary if len(w) >= 10]
+Sorted_LongWords = sorted(LongWords)
+print (Sorted_LongWords)
+print("")
+print ("searching for words which ends with -tion")
+EndsWith = [w for w in set(TokenizeText) if w.endswith("tion")]
+print (EndsWith)
