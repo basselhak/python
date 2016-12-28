@@ -1,0 +1,32 @@
+#import modules 
+import nltk
+
+# load and read text
+print ("Load and read text...")
+OpenFile = open("constitution_of_usa.txt")
+ReadText = OpenFile.read()
+
+# remove new lines and tabs
+print ("Remove new lines and tabs ...")
+RawText = ReadText.replace("\n", " ").replace("\t", " ").replace(",", " ").replace("1", " ")
+
+# counting text length
+print ("Counting length of text ...")
+TextLength = len(RawText)
+print ("Text Length =", TextLength)
+
+# tokenize text
+print ("tokenize text ...")
+TokenizeText = nltk.word_tokenize(RawText)
+
+# sorting words in alphabetic order
+print ("sorting words in alphabetic order")
+SortedWordList = sorted(set(TokenizeText))
+
+print (SortedWordList)
+
+#Counting number of distinct words
+UnicWords = len(set(SortedWordList))
+
+print ("Caculating the number of distinct words. The number of distinct words is:")
+print (UnicWords)
