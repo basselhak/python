@@ -1,4 +1,4 @@
-#import modules
+#import module or modules
 import nltk
 
 # load and read text
