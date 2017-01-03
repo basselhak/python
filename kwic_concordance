@@ -1,0 +1,9 @@
+import def_concordance
+
+with open("constitution_of_usa.txt") as open_text1, open("text1_concordance_file.txt",
+        "w") as concordance1:
+    read_text1 = open_text1.read()
+    print("text1: Examine occurrences of a word and its context")
+    concordance_text1 = def_concordance.concordance(" States ", read_text1)
+    for line in concordance_text1:
+        concordance1.write(line + "\n")
