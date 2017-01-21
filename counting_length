@@ -5,7 +5,7 @@ ReadText = OpenFile.read()
 
 # remove new lines and tabs
 print ("Remove new lines and tabs ...")
-RawText = ReadText.replace("\n", " ").replace("\t", " ")
+RawText = ReadText.replace("\n", " ").replace('"', " ").replace(")", " ").replace("(", " ").replace("\t", " ").replace("-", " ").replace(".", " ").replace(";", " ").replace(",", " ").replace("  ", " ")
 
 # counting length
 print ("counting length ...")
