@@ -4,7 +4,7 @@ def concordance(word, text, samples=25, width=75):
     # if nltk.text.Text.concordance is not flexible enough
     i = 0
     # replace newlines for printing purposes
-    text = text.replace("\n", " ").replace(".", " ").replace(",", " ").replace("- ", " ")
+    text = text.replace("\n", " ").replace('"', " ").replace(")", " ").replace("(", " ").replace("\t", " ").replace("-", " ").replace(".", " ").replace(";", " ").replace(",", " ").replace("  ", " ")
     for r in re.finditer(word, text):
         if i > samples:
             break
