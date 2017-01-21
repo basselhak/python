@@ -1,37 +1,52 @@
 #import modules 
-import nltk
 import csv
+import operator
+import nltk
 
-# load and read text
 print ("Load and read text...")
 OpenFile = open("constitution_of_usa.txt")
 ReadText = OpenFile.read()
 
 # remove new lines and tabs
-print ("Remove new lines and tabs ...")
+print ("Remove new lines and tabs and other signs ...")
 RawText = ReadText.replace("\n", " ").replace('"', " ").replace(")", " ").replace("(", " ").replace("\t", " ").replace("-", " ").replace(".", " ").replace(";", " ").replace(",", " ").replace("  ", " ")
 
-# Tokenization
-print ("Tokenize text ...")
-TokenizeText = nltk.word_tokenize(RawText)
+print ("lower letters ...")
+lower = RawText.lower()
 
-# Work out frequency distribution for each word in the text
-print ("Analyzing word frequency ...")
-WordFreq = nltk.FreqDist(TokenizeText)
+print ("splitting text ...")
+split = lower.split()
 
-# sort by size (so that we see the most commonly occurring words first)
-print ("Sorting word frequency by size ...")
-WordFreqSorted = WordFreq.most_common()
+#python approach to word frequency
+print ("Calculating and printing the 25 most used words")
+freq_dis = {}
+for tok in split:
+    if tok in freq_dis:
+        freq_dis[tok]+=1
+    else:
+        freq_dis[tok]=1
 
-# Output to csv file
-with open("WordFreqSorted.csv","w") as output:
+sorted_freq_dist = sorted(freq_dis.items(), key=operator.itemgetter(1), reverse=True)
+print (sorted_freq_dist[:25])
+
+#nltk approach to word frequency
+print("calculating, printing the word frequence and then plotting the 25 most used words on a graph")
+Freq_dist_nltk = nltk.FreqDist(split)
+print (Freq_dist_nltk)
+for k,v in Freq_dist_nltk.items():
+    print (str(k)+":"+str(v))
+
+Freq_dist_nltk.plot(25, cumulative=False)
+
+# This code output the words to csv file
+with open("sorted_freq_dist.csv","w") as output:
     csv_output=csv.writer(output)
     csv_output.writerow(["word","freq"])
-    for row in WordFreqSorted:
+    for row in sorted_freq_dist:
         try:
             csv_output.writerow(row)
         except:
             print("cannot save "+str(row)+" to file")
 
 # Tell people to open the csv-fil and look for the word frequency
-print("Look for WordFreqSorted.csv in the folder")
+print("Look for sorted_freq_dist.csv in the folder")
