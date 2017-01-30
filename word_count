@@ -6,7 +6,7 @@ print ("Load and read text...")
 OpenFile = open("constitution_of_usa.txt")
 ReadText = OpenFile.read()
 
-# remove new lines and tabs
+# remove new lines, tabs, useless signs and words
 print ("Remove new lines and tabs ...")
 RawText = ReadText.replace("\n", " ").replace('"', " ").replace(")", " ").replace("(", " ").replace("\t", " ").replace("-", " ").replace(".", " ").replace(";", " ").replace(",", " ").replace("  ", " ")
 
