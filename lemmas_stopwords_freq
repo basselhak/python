@@ -1,0 +1,51 @@
+#import modules 
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+import csv
+import operator
+import nltk
+
+print ("Load and read text...")
+OpenFile = open("constitution_of_usa.txt")
+ReadText = OpenFile.read()
+
+# remove new lines and tabs
+print ("Remove new lines and tabs and other signs ...")
+RawText = ReadText.replace("\n", " ").replace('"', " ").replace(")", " ").replace("(", " ").replace("\t", " ").replace("-", " ").replace(".", " ").replace(";", " ").replace(",", " ").replace("  ", " ")
+
+print ("Lower letters ...")
+lower = RawText.lower()
+
+print ("splitting text ...")
+split = lower.split()
+
+
+#Lemmatize ... get the root word
+print ("Lemmatizing ...")
+lemmas = []
+wlem = nltk.WordNetLemmatizer()
+for tok in split:
+    lemmas.append(wlem.lemmatize(tok))
+#print(lemmas)
+
+#Removing english stopwords
+print ("Removing the stopwords")
+zerostopword = []
+stoplist = stopwords.words("english")
+for word in lemmas:
+    if word not in stoplist:
+        zerostopword.append(word)  
+
+#Removing useless short words
+print ("Removing the shortes words")
+
+cleanwordlist = []
+for word in zerostopword:
+    if len(word) >3:
+        cleanwordlist.append(word)
+print(cleanwordlist)
+
+print(" ")
+print("Calculating word frequence and plotting it on a graph")
+Freq_dist_nltk = nltk.FreqDist(cleanwordlist)
+Freq_dist_nltk.plot(40, cumulative=False)
