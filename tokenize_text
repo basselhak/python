@@ -1,5 +1,7 @@
 #import modules 
 import nltk
+from nltk.tokenize import sent_tokenize
+from nltk.tokenize import word_tokenize
 
 # load and read text
 print ("Load and read text...")
@@ -8,10 +10,22 @@ ReadText = OpenFile.read()
 
 # remove new lines and tabs
 print ("Remove new lines and tabs ...")
-RawText = ReadText.replace("\n", " ").replace('"', " ").replace(")", " ").replace("(", " ").replace("\t", " ").replace("-", " ").replace(".", " ").replace(";", " ").replace(",", " ").replace("  ", " ")
+RawText = ReadText.replace("\n", " ").replace('"', " ").replace(")", " ").replace("(", " ").replace("\t", " ").replace("-", " ").replace("  ", " ")
 
 # Tokenization
-print ("Tokenize text ...")
-TokenizeText = nltk.word_tokenize(RawText)
+print ("Tokenizing text into sentences ...")
+TokenizeSent = sent_tokenize(RawText)
 
-print (TokenizeText)
+print ("Tokenizing sentences into words ...")
+
+TokenizeWords = word_tokenize(RawText)
+
+print (TokenizeWords)
+
+# select a paragraph 
+select_para = TokenizeSent[1]
+print(select_para)
+
+# select a word 
+select_word = TokenizeWords[1]
+print(select_word)
