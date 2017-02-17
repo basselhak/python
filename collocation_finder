@@ -1,0 +1,40 @@
+from nltk.collocations import BigramCollocationFinder
+from nltk.metrics import BigramAssocMeasures
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.collocations import TrigramCollocationFinder
+from nltk.metrics import TrigramAssocMeasures
+
+
+# load and read text
+print ("Load and read text...")
+OpenFile = open("constitution_of_usa.txt")
+ReadText = OpenFile.read()
+
+# remove new lines and tabs
+print ("Remove new lines and tabs and other signs ...")
+RawText = ReadText.replace("\n", " ").replace('"', " ").replace(")", " ").replace("(", " ").replace("\t", " ").replace("-", " ").replace(".", " ").replace(";", " ").replace(",", " ").replace("  ", " ")
+
+# Tokenizing
+print ("Tokenizing words ...")
+TokenizeWords = word_tokenize(RawText)
+
+# Filtering stop words
+print ("Filtering stop words ...")
+FilterStop = []
+stoplist = stopwords.words("english")
+for word in TokenizeWords:
+    if word not in stoplist:
+        FilterStop.append(word)
+
+#Bigrams collocation
+print ("Finding collocation pairs ...")
+words = [w.lower() for w in FilterStop]
+Bigramcf = BigramCollocationFinder.from_words(words)
+print (Bigramcf.nbest(BigramAssocMeasures.likelihood_ratio, 5))
+
+#Trigrams collocation
+print ("Finding collocation triplets ...")
+words = [w.lower() for w in FilterStop]
+Trigramcf = TrigramCollocationFinder.from_words(words)
+print (Trigramcf.nbest(TrigramAssocMeasures.likelihood_ratio, 5))
