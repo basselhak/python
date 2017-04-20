@@ -23,6 +23,6 @@ print ("The word occurs:")
 print (CountAWord, "times")
 
 # Calculate the percentage of the text occupied by that word
-CalPercent = ReadText.count("nation") * 100 / len(ReadText)
+CalPercent = ReadText.count(" shall ") * 100 / len(ReadText)
 print ("The percentage of the text occupied by that word is:")
 print (CalPercent, "%")
