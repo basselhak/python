@@ -7,3 +7,5 @@ with open("constitution_of_usa.txt") as open_text1, open("text1_concordance_file
     concordance_text1 = def_concordance.concordance(" States ", read_text1)
     for line in concordance_text1:
         concordance1.write(line + "\n")
+
+print ("Look for text1_concordance_file in your folder")
