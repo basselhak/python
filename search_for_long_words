@@ -1,5 +1,6 @@
 #import modules
 import nltk
+nltk.download("punkt")
 
 # load and read text
 print ("Load and read text...")
