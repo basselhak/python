@@ -25,7 +25,9 @@ Vocabulary = set(TokenizeText)
 LongWords = [w for w in Vocabulary if len(w) >= 10]
 Sorted_LongWords = sorted(LongWords)
 print (Sorted_LongWords)
+
 print("")
+
 print ("searching for words which ends with -tion")
 EndsWith = [w for w in set(TokenizeText) if w.endswith("tion")]
 print (EndsWith)
