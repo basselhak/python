@@ -1,9 +1,11 @@
-#import modules 
+#import modules
+import nltk
+nltk.download("wordnet")
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import csv
 import operator
-import nltk
+
 
 print ("Load and read text...")
 OpenFile = open("constitution_of_usa.txt")
@@ -35,17 +37,3 @@ stoplist = stopwords.words("english")
 for word in lemmas:
     if word not in stoplist:
         zerostopword.append(word)  
-
-#Removing useless short words
-print ("Removing the shortes words")
-
-cleanwordlist = []
-for word in zerostopword:
-    if len(word) >3:
-        cleanwordlist.append(word)
-print(cleanwordlist)
-
-print(" ")
-print("Calculating word frequence and plotting it on a graph")
-Freq_dist_nltk = nltk.FreqDist(cleanwordlist)
-Freq_dist_nltk.plot(40, cumulative=False)
