@@ -55,3 +55,5 @@ print(len(VerbList), "verbs.")
 print ("Analyzing the ratio of nouns and verbs ...")
 print ("The ratio of nouns and verbs in the text =")
 print((str(len(NounList)/float(len(VerbList)))))
+
+print ("look for nouns and verbs files in your folder")
