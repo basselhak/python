@@ -1,5 +1,7 @@
 #import modules 
 import nltk
+nltk.download("punkt")
+nltk.download("averaged_perceptron_tagger")
 
 # load and read text
 print ("Load and read text...")
