@@ -1,6 +1,7 @@
 #import modules
 import nltk
 nltk.download("wordnet")
+nltk.download("stopwords")
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
 import csv
