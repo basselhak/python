@@ -1,3 +1,4 @@
+#Before running this code you have to add the "def_concordance" file to your folder
 import def_concordance
 
 with open("constitution_of_usa.txt") as open_text1, open("text1_concordance_file.txt",
