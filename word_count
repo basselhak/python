@@ -17,6 +17,6 @@ print ("Text Length =", TextLength)
 
 # Count how many times a word occurs in a text
 print ("Counting how many times a word occurs in the text and calculate the percentage of the text occupied by that word.")
-CountAWord = ReadText.count("nation")
+CountAWord = ReadText.count(" shall ")
 print ("The word occurs:")
 print (CountAWord, "times")
