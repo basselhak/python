@@ -8,8 +8,8 @@ print ("Remove new lines and tabs ...")
 RawText = ReadText.replace("\n", " ").replace('"', " ").replace(")", " ").replace("(", " ").replace("\t", " ").replace("-", " ").replace(".", " ").replace(";", " ").replace(",", " ").replace("  ", " ")
 
 
-findWord = RawText.find(" We ")
+findWord = RawText.find("We")
 print (findWord)
 
-Text = RawText[58:158]
+Text = RawText[55:158]
 print (Text)
