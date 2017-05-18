@@ -34,9 +34,8 @@ for word in TokenizeWords:
 print ("Finding collocation pairs ...")
 Bigramcf = BigramCollocationFinder.from_words(words, window_size=2)
 print (Bigramcf.nbest(BigramAssocMeasures.likelihood_ratio, 5))
-''' 
 
 #Trigrams collocation
 print ("Finding collocation triplets ...")
-Trigramcf = TrigramCollocationFinder.from_words(words, window_size=3)
+Trigramcf = TrigramCollocationFinder.from_words(words)
 print (Trigramcf.nbest(TrigramAssocMeasures.likelihood_ratio, 5))
