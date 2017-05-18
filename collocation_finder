@@ -17,9 +17,10 @@ ReadText = OpenFile.read()
 print ("Remove new lines and tabs and other signs ...")
 RawText = ReadText.replace("\n", " ").replace('"', " ").replace(")", " ").replace("(", " ").replace("\t", " ").replace("-", " ").replace(".", " ").replace(";", " ").replace(",", " ").replace("  ", " ")
 
-# Tokenizing
+# Tokenizing and lower cases
 print ("Tokenizing words ...")
 TokenizeWords = word_tokenize(RawText)
+TokenizeWords = [w.lower() for w in TokenizeWords]
 
 # Filtering stop words
 print ("Filtering stop words ...")
@@ -31,12 +32,11 @@ for word in TokenizeWords:
 
 #Bigrams collocation
 print ("Finding collocation pairs ...")
-words = [w.lower() for w in FilterStop]
-Bigramcf = BigramCollocationFinder.from_words(words)
+Bigramcf = BigramCollocationFinder.from_words(words, window_size=2)
 print (Bigramcf.nbest(BigramAssocMeasures.likelihood_ratio, 5))
+''' 
 
 #Trigrams collocation
 print ("Finding collocation triplets ...")
-words = [w.lower() for w in FilterStop]
-Trigramcf = TrigramCollocationFinder.from_words(words)
+Trigramcf = TrigramCollocationFinder.from_words(words, window_size=3)
 print (Trigramcf.nbest(TrigramAssocMeasures.likelihood_ratio, 5))
