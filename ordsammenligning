@@ -1,0 +1,30 @@
+def count_word(text, word):
+    count = 0
+    for w in text:
+        if w == word:
+            count += 1
+    return count
+
+#add text to program
+file = input("indtast filnavn: ")
+
+file = file + ".txt"
+
+with open(file) as f:
+    text = f.read()
+
+#clean and lower
+clean_text = text.replace(".", "").replace(",", "").replace("!", "").replace("?", "").replace("-", "")
+lower_clean_text = clean_text.lower()
+split_text = lower_clean_text.split()
+
+#add word
+your_first_word = str(input("Første ord du vil tælle? "))
+your_second_word = str(input("Andet ord du vil tælle? "))
+
+analyze_first_word = count_word(split_text, your_first_word)
+analyze_second_word = count_word(split_text, your_second_word)
+total = analyze_first_word + analyze_second_word
+
+print(your_first_word, "udgør", 100 * analyze_first_word / total, "% af de to ord samlet")
+print(your_second_word, "udgør", 100 * analyze_second_word / total, "% af de to ord samlet")
